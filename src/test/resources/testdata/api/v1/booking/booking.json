@@ -1,0 +1,35 @@
+[
+  {
+    "firstname": "Iron",
+    "lastname": "Man",
+    "totalprice": 250,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2018-01-01",
+      "checkout": "2019-01-01"
+    },
+    "additionalneeds": "Breakfast"
+  },
+  {
+    "firstname": "Captain",
+    "lastname": "America",
+    "totalprice": 300,
+    "depositpaid": false,
+    "bookingdates": {
+      "checkin": "2026-06-01",
+      "checkout": "2026-06-07"
+    },
+    "additionalneeds": "Dinner"
+  },
+  {
+    "firstname": "Spider",
+    "lastname": "Man",
+    "totalprice": 1,
+    "depositpaid": true,
+    "bookingdates": {
+      "checkin": "2025-12-01",
+      "checkout": "2025-12-02"
+    },
+    "additionalneeds": "None"
+  }
+]

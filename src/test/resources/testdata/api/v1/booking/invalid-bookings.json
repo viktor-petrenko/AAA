@@ -1,0 +1,62 @@
+[
+  {
+    "caseName": "Missing firstname",
+    "payload": {
+      "lastname": "Man",
+      "totalprice": 250,
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2018-01-01",
+        "checkout": "2019-01-01"
+      },
+      "additionalneeds": "Breakfast"
+    },
+    "expectedStatuses": [400, 500]
+  },
+  {
+    "caseName": "Missing bookingdates",
+    "payload": {
+      "firstname": "Iron",
+      "lastname": "Man",
+      "totalprice": 250,
+      "depositpaid": true,
+      "additionalneeds": "Breakfast"
+    },
+    "expectedStatuses": [400, 500]
+  },
+  {
+    "caseName": "Wrong totalprice type",
+    "payload": {
+      "firstname": "Iron",
+      "lastname": "Man",
+      "totalprice": "expensive",
+      "depositpaid": true,
+      "bookingdates": {
+        "checkin": "2018-01-01",
+        "checkout": "2019-01-01"
+      },
+      "additionalneeds": "Breakfast"
+    },
+    "expectedStatuses": [400, 500]
+  },
+  {
+    "caseName": "Wrong depositpaid type",
+    "payload": {
+      "firstname": "Iron",
+      "lastname": "Man",
+      "totalprice": 250,
+      "depositpaid": "yes",
+      "bookingdates": {
+        "checkin": "2018-01-01",
+        "checkout": "2019-01-01"
+      },
+      "additionalneeds": "Breakfast"
+    },
+    "expectedStatuses": [400, 500]
+  },
+  {
+    "caseName": "Empty payload",
+    "payload": {},
+    "expectedStatuses": [400, 500]
+  }
+]
