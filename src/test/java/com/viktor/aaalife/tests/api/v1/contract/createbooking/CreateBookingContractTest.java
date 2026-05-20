@@ -21,7 +21,7 @@ public class CreateBookingContractTest extends ApiBaseTest {
     private static final String CREATE_BOOKING_RESPONSE_SCHEMA = "testdata/api/v1/schemas/create-booking-response-schema.json";
     private static final String GET_BOOKING_BY_ID_RESPONSE_SCHEMA = "testdata/api/v1/schemas/getbookingby-id-response-schema.json";
 
-    @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
+    @Test(groups = "contract", dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
     public void createBooking_validPayload_matchesDocumentedResponseContract(Booking booking) {
         Response response = client().createBooking(booking);
 

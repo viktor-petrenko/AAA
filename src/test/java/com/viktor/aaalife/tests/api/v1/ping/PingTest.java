@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PingTest extends ApiBaseTest {
 
-    @Test
+    @Test(groups = "healthcheck")
     public void ping_healthCheck_returnsSuccessStatus() {
         Response response = client().ping();
 

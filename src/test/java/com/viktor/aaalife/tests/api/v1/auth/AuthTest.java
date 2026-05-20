@@ -1,7 +1,7 @@
 package com.viktor.aaalife.tests.api.v1.auth;
 
 import com.viktor.aaalife.setup.api.v1.base.ApiBaseTest;
-import com.viktor.aaalife.setup.config.ConfigReader;
+import com.viktor.aaalife.setup.config.PropertyReader;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -11,7 +11,7 @@ public class AuthTest extends ApiBaseTest {
 
     @Test
     public void auth_validCredentials_returnsToken() {
-        Response response = client().createToken(ConfigReader.get("api.username"), ConfigReader.get("api.password"));
+        Response response = client().createToken(PropertyReader.get("api.username"), PropertyReader.get("api.password"));
 
         assertThat(response.statusCode()).isEqualTo(200);
         assertThat(response.jsonPath().getString("token")).isNotBlank();

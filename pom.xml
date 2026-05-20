@@ -104,8 +104,7 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/*Test.java</include>
-                        <include>**/*Tests.java</include>
+                        <suiteXmlFile>src/test/resources/suites/all.xml</suiteXmlFile>
                     </includes>
                 </configuration>
             </plugin>

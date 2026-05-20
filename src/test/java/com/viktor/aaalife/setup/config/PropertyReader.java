@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public final class ConfigReader {
+public final class PropertyReader {
 
     private static final String CONFIG_FILE = "config.properties";
     private static final Properties properties = new Properties();
 
     static {
-        try (InputStream inputStream = ConfigReader.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+        try (InputStream inputStream = PropertyReader.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
 
             if (inputStream == null) {
                 throw new IllegalStateException("Config file not found: " + CONFIG_FILE);
@@ -23,7 +23,7 @@ public final class ConfigReader {
         }
     }
 
-    private ConfigReader() {
+    private PropertyReader() {
     }
 
     public static String get(String key) {

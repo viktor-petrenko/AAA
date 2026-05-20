@@ -3,7 +3,7 @@ package com.viktor.aaalife.tests.api.v1.booking;
 import com.viktor.aaalife.setup.api.v1.base.ApiBaseTest;
 import com.viktor.aaalife.setup.api.v1.models.Booking;
 import com.viktor.aaalife.setup.api.v1.models.BookingDates;
-import com.viktor.aaalife.setup.config.ConfigReader;
+import com.viktor.aaalife.setup.config.PropertyReader;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -38,7 +38,7 @@ public class PartialUpdateBookingTests extends ApiBaseTest {
                 "lastname", "America"
         );
 
-        String token = client().createTokenValue(ConfigReader.get("api.username"),  ConfigReader.get("api.password"));
+        String token = client().createTokenValue(PropertyReader.get("api.username"),  PropertyReader.get("api.password"));
         Response patchResponse = client().partialUpdateBooking(bookingId, partialPayload, token);
 
         assertThat(patchResponse.statusCode()).isEqualTo(200);

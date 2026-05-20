@@ -1,6 +1,5 @@
 package com.viktor.aaalife.setup.api.v1.configs;
 
-import com.viktor.aaalife.setup.config.ConfigReader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.LogConfig;
 import io.restassured.http.ContentType;

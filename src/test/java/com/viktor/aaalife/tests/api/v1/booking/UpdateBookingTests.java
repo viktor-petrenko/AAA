@@ -3,7 +3,7 @@ package com.viktor.aaalife.tests.api.v1.booking;
 import com.viktor.aaalife.setup.api.v1.base.ApiBaseTest;
 import com.viktor.aaalife.setup.api.v1.models.Booking;
 import com.viktor.aaalife.setup.api.v1.models.BookingDates;
-import com.viktor.aaalife.setup.config.ConfigReader;
+import com.viktor.aaalife.setup.config.PropertyReader;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -39,7 +39,7 @@ public class UpdateBookingTests extends ApiBaseTest {
                 "Dinner"
         );
 
-        String token = client().createTokenValue(ConfigReader.get("api.username"), ConfigReader.get("api.password"));
+        String token = client().createTokenValue(PropertyReader.get("api.username"), PropertyReader.get("api.password"));
         Response updateResponse = client().updateBooking(bookingId, updatedBooking, token);
         assertThat(updateResponse.statusCode()).isEqualTo(200);
         assertThat(updateResponse.jsonPath().getString("firstname")).isEqualTo("Tony");

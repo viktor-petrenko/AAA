@@ -1,7 +1,7 @@
 package com.viktor.aaalife.setup.api.v1.base;
 
 import com.viktor.aaalife.setup.api.v1.clients.RestfulBookerClient;
-import com.viktor.aaalife.setup.config.ConfigReader;
+import com.viktor.aaalife.setup.config.PropertyReader;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 
@@ -10,7 +10,7 @@ public abstract class ApiBaseTest {
 
     @BeforeClass
     public void apiBaseSetUp() {
-        RestAssured.baseURI = ConfigReader.get("api.base.uri");
+        RestAssured.baseURI = PropertyReader.get("api.base.url");
         client = new RestfulBookerClient();
     }
 

@@ -1,10 +1,12 @@
 # UI target
 # Sauce Demo (e‑commerce): https://www.saucedemo.com
-) UI Smoke Flow
-Build Page Objects for at least 2 pages
-Implement a happy‑path smoke covering login + one primary user journey
-Use sensible explicit waits, avoid sleeps, and keep locators resilient
-Capture a screenshot or HTML dump on failure
+UI framework design:
+- Browser creation is isolated in BrowserFactory
+- Driver lifecycle is managed through lazy ThreadLocal DriverManager
+- Page Objects encapsulate page behavior and locators
+- BasePage provides explicit wait helpers
+- TestNG listener captures screenshot and HTML only on failure
+- Configuration is externalized through config.properties with system property override support
 # API targetAAA Life  SDET Technical Assessment1
 # Restful Booker: https://restful-booker.herokuapp.com
 1) API Test Suite
