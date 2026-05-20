@@ -5,7 +5,7 @@ import com.viktor.aaalife.setup.config.PropertyReader;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 
-public abstract class ApiBaseTest {
+public abstract class ApiBaseTest extends BaseTest{
     private RestfulBookerClient client;
 
     @BeforeClass

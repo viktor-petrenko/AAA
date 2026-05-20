@@ -49,12 +49,23 @@ public abstract class BasePage {
 
     protected void click(By locator) {
         WebElement element = clickable(locator);
+        boolean highlightClicks = Boolean.parseBoolean(
+                PropertyReader.getOrDefault("ui.highlight.clicks", "false")
+        );
 
-        if (Boolean.parseBoolean(PropertyReader.getOrDefault("ui.highlight.clicks", "false"))) {
+        if (highlightClicks) {
             ClickHighlighter.markClick(driver, element);
         }
 
         element.click();
+
+        if (highlightClicks) {
+            try {
+                ClickHighlighter.removeClickMarkers(driver);
+            } catch (RuntimeException ignored) {
+                // Page may navigate immediately after click, so the old DOM marker may no longer exist.
+            }
+        }
     }
 
     protected void type(By locator, String value) {

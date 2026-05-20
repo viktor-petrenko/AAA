@@ -4,6 +4,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/**
+ * Adds and removes a temporary visual marker around clicked UI elements.
+ *
+ * <p>This is used only for debugging and can be enabled through configuration.</p>
+ */
 public final class ClickHighlighter {
 
     private ClickHighlighter() {
@@ -32,5 +37,15 @@ public final class ClickHighlighter {
                 """;
 
         ((JavascriptExecutor) driver).executeScript(script, element);
+    }
+
+    public static void removeClickMarkers(WebDriver driver) {
+        String script = """
+                document
+                    .querySelectorAll('[data-test-click-marker="true"]')
+                    .forEach(marker => marker.remove());
+                """;
+
+        ((JavascriptExecutor) driver).executeScript(script);
     }
 }
