@@ -1,4 +1,4 @@
-package com.viktor.aaalife.setup.ui.listeners;
+package com.viktor.aaalife.setup.ui.artifacts;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -40,12 +40,13 @@ public final class FailureArtifactManager {
         }
 
         String safeTestName = testName.replaceAll("[^a-zA-Z0-9-_]", "_");
+        String fileName = safeTestName + "-" + System.currentTimeMillis();
 
         try {
             Files.createDirectories(FAILURE_ARTIFACTS_DIRECTORY);
 
-            captureScreenshot(driver, safeTestName);
-            captureHtmlDump(driver, safeTestName);
+            captureScreenshot(driver, fileName);
+            captureHtmlDump(driver, fileName);
 
         } catch (IOException e) {
             throw new RuntimeException("Failed to capture failure artifacts for test: " + testName, e);

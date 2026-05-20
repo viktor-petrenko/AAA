@@ -1,5 +1,6 @@
 package com.viktor.aaalife.setup.ui.listeners;
 
+import com.viktor.aaalife.setup.ui.artifacts.FailureArtifactManager;
 import com.viktor.aaalife.setup.ui.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;

@@ -1,10 +1,10 @@
 package com.viktor.aaalife.setup.ui.pages;
 
+import com.viktor.aaalife.setup.config.PropertyReader;
 import com.viktor.aaalife.setup.ui.utils.ClickHighlighter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -49,7 +49,11 @@ public abstract class BasePage {
 
     protected void click(By locator) {
         WebElement element = clickable(locator);
-        ClickHighlighter.markClick(driver, element);
+
+        if (Boolean.parseBoolean(PropertyReader.getOrDefault("ui.highlight.clicks", "false"))) {
+            ClickHighlighter.markClick(driver, element);
+        }
+
         element.click();
     }
 
@@ -60,10 +64,10 @@ public abstract class BasePage {
     }
 
     protected String textOf(By locator) {
-        return visible(locator).getText();
+        return visible(locator).getText().trim();
     }
 
     protected void waitForUrlContains(String expectedUrlPart) {
-        wait.until((ExpectedCondition<Boolean>) driver -> driver.getCurrentUrl().contains(expectedUrlPart));
+        wait.until(ExpectedConditions.urlContains(expectedUrlPart));
     }
 }
