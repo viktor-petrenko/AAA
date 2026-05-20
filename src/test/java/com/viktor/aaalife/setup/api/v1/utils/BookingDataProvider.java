@@ -2,6 +2,7 @@ package com.viktor.aaalife.setup.api.v1.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.viktor.aaalife.setup.api.v1.models.Booking;
+import com.viktor.aaalife.setup.api.v1.models.BookingDates;
 import com.viktor.aaalife.setup.api.v1.models.InvalidBookingCase;
 import org.testng.annotations.DataProvider;
 
@@ -80,5 +81,17 @@ public final class BookingDataProvider {
                 {"!@#$", List.of(400, 404), "Special characters booking ID"}
         };
     }
+
+    public static Booking defaultBooking() {
+        return new Booking(
+                "John",
+                "Smith",
+                150,
+                true,
+                new BookingDates("2026-06-01", "2026-06-05"),
+                "Breakfast"
+        );
+    }
+
 
 }

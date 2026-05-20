@@ -4,6 +4,7 @@ import com.viktor.aaalife.setup.api.v1.base.ApiBaseTest;
 import com.viktor.aaalife.setup.api.v1.models.Booking;
 import com.viktor.aaalife.setup.api.v1.models.BookingDates;
 import com.viktor.aaalife.setup.api.v1.utils.BookingDataProvider;
+import com.viktor.aaalife.setup.config.ConfigReader;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -32,7 +33,7 @@ public class DeleteBookingTests extends ApiBaseTest {
                 .as("Created booking id should be positive")
                 .isGreaterThan(0);
 
-        String token = client().createTokenValue("admin", "password123");
+        String token = client().createTokenValue(ConfigReader.get("api.username"), ConfigReader.get("api.password"));
         // https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-DeleteBooking
         // doc says Success 200
         // BUT
@@ -105,7 +106,7 @@ public class DeleteBookingTests extends ApiBaseTest {
 
     private String resolveToken(String tokenInput) {
         if ("VALID_TOKEN".equals(tokenInput)) {
-            return client().createTokenValue("admin", "password123");
+            return client().createTokenValue(ConfigReader.get("api.username"), ConfigReader.get("api.password"));
         }
 
         if ("INVALID_TOKEN".equals(tokenInput)) {

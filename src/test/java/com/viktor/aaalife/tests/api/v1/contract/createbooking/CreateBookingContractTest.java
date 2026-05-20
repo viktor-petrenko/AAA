@@ -19,7 +19,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 public class CreateBookingContractTest extends ApiBaseTest {
 
     private static final String CREATE_BOOKING_RESPONSE_SCHEMA = "testdata/api/v1/schemas/create-booking-response-schema.json";
-    private static final String GET_BOOKING_RESPONSE_SCHEMA = "testdata/api/v1/schemas/booking-response-schema.json";
+    private static final String GET_BOOKING_BY_ID_RESPONSE_SCHEMA = "testdata/api/v1/schemas/getbookingby-id-response-schema.json";
 
     @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
     public void createBooking_validPayload_matchesDocumentedResponseContract(Booking booking) {
@@ -52,7 +52,7 @@ public class CreateBookingContractTest extends ApiBaseTest {
             softly.assertThat(getResponse.contentType()).contains("application/json");
         });
 
-        assertMatchesSchema(getResponse, GET_BOOKING_RESPONSE_SCHEMA);
+        assertMatchesSchema(getResponse, GET_BOOKING_BY_ID_RESPONSE_SCHEMA);
         Map<String, Object> retrievedBooking = getResponse.as(new TypeRef<>() {});
         assertBookingPayloadMatches(retrievedBooking, booking);
     }
