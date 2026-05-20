@@ -14,7 +14,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 public class CreateBookingTests extends ApiBaseTest {
 
     @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldCreateBookingWhenValidPayloadProvided(Booking booking) {
+    public void createBooking_validPayload_returnsCreatedBooking(Booking booking) {
         Response response = client().createBooking(booking);
 
         assertSoftly(softly -> {
@@ -50,7 +50,7 @@ public class CreateBookingTests extends ApiBaseTest {
     }
 
     @Test(dataProvider = "invalidBookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldRejectBookingWhenInvalidPayloadProvided(InvalidBookingCase testCase) {
+    public void createBooking_invalidPayload_returnsExpectedError(InvalidBookingCase testCase) {
         Response response = client().createBooking(testCase.payload());
 
         assertThat(response.statusCode())
@@ -62,7 +62,7 @@ public class CreateBookingTests extends ApiBaseTest {
      * minimum valid totalprice = 1 or 1-character name
      */
     @Test
-    public void shouldCreateBookingWhenMinimumBoundaryValuesProvided() {
+    public void createBooking_minimumValidBoundaryValues_returnsCreatedBooking() {
         Booking booking = new Booking(
                 "A",
                 "B",

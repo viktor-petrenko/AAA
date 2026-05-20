@@ -74,6 +74,15 @@ public class RestfulBookerClient {
         return logResponseIfEnabled(response);
     }
 
+    public Response createBookingRaw(String rawJsonBody) {
+        Response response = request()
+                .body(rawJsonBody)
+                .when()
+                .post("/booking");
+
+        return logResponseIfEnabled(response);
+    }
+
     public Response searchBookingByName(String firstname, String lastname) {
         Response response = request()
                 .queryParam("firstname", firstname)

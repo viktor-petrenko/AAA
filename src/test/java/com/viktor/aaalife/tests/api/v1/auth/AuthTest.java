@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AuthTest extends ApiBaseTest {
 
     @Test
-    public void successfulTokenCreation() {
+    public void auth_validCredentials_returnsToken() {
         Response response = client().createToken("admin", "password123");
 
         assertThat(response.statusCode()).isEqualTo(200);
@@ -17,7 +17,7 @@ public class AuthTest extends ApiBaseTest {
     }
 
     @Test
-    public void invalidTokenCreation() {
+    public void auth_invalidCredentials_returnsUnauthorizedOrForbidden() {
         Response response = client().createToken("user", "user");
 
         assertThat(response.statusCode()).isIn(401, 403);

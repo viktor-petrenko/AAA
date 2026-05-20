@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GetBookingTests extends ApiBaseTest {
 
     @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldReturnBookingWhenValidIdProvided(Booking booking) {
+    public void getBookingById_existingBooking_returnsBookingDetails(Booking booking) {
         Response createResponse = client().createBooking(booking);
         assertThat(createResponse.statusCode()).isEqualTo(200);
 
@@ -42,8 +42,8 @@ public class GetBookingTests extends ApiBaseTest {
 
 
     @Test
-    public void shouldReturnNotFoundWhenBookingIdIsNullString() {
-        Response response = client().getBookingByIdRaw(null);
+    public void getBookingById_literalNullPathValue_returnsNotFound() {
+        Response response = client().getBookingByIdRaw("null");
 
         assertThat(response.statusCode())
                 .as("Non-existing booking ID should return 404")
@@ -51,7 +51,7 @@ public class GetBookingTests extends ApiBaseTest {
     }
 
     @Test(dataProvider = "invalidBookingIds", dataProviderClass = BookingDataProvider.class)
-    public void shouldReturnNotFoundOrBadRequestWhenInvalidIdProvided(
+    public void getBookingById_invalidOrBoundaryId_returnsExpectedError(
             Object bookingId,
             List<Integer> expectedStatuses,
             String caseName

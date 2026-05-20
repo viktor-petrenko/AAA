@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PartialUpdateBookingTests extends ApiBaseTest {
 
     @Test
-    public void shouldPatchSelectedBookingFieldsWhenValidTokenProvided() {
+    public void partialUpdateBooking_selectedFieldsWithValidToken_updatesOnlyProvidedFields() {
         Booking originalBooking = new Booking(
                 "Steve",
                 "Rogers",

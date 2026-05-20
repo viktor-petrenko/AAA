@@ -1,18 +1,14 @@
 package com.viktor.aaalife.setup.api.v1.utils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.viktor.aaalife.setup.api.v1.models.Booking;
 import com.viktor.aaalife.setup.api.v1.models.InvalidBookingCase;
 import org.testng.annotations.DataProvider;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public final class BookingDataProvider {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private static final String VALID_BOOKING_DATA_PATH =
             "testdata/api/v1/booking/booking.json";
@@ -25,7 +21,7 @@ public final class BookingDataProvider {
 
     @DataProvider(name = "bookingData")
     public static Object[][] bookingData() {
-        List<Booking> bookings = readJson(
+        List<Booking> bookings = JsonReader.readJson(
                 VALID_BOOKING_DATA_PATH,
                 new TypeReference<List<Booking>>() {
                 }
@@ -38,7 +34,7 @@ public final class BookingDataProvider {
 
     @DataProvider(name = "invalidBookingData")
     public static Object[][] invalidBookingData() {
-        List<InvalidBookingCase> cases = readJson(
+        List<InvalidBookingCase> cases = JsonReader.readJson(
                 INVALID_BOOKING_DATA_PATH,
                 new TypeReference<List<InvalidBookingCase>>() {
                 }
@@ -72,19 +68,17 @@ public final class BookingDataProvider {
         };
     }
 
-    private static <T> T readJson(String path, TypeReference<T> typeReference) {
-        try (InputStream inputStream = BookingDataProvider.class
-                .getClassLoader()
-                .getResourceAsStream(path)) {
-
-            if (inputStream == null) {
-                throw new IllegalArgumentException("Test data file not found: " + path);
-            }
-
-            return OBJECT_MAPPER.readValue(inputStream, typeReference);
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read booking test data from: " + path, e);
-        }
+    @DataProvider(name = "invalidBookingIds")
+    public static Object[][] invalidBookingIds() {
+        return new Object[][]{
+                {0, List.of(404), "Boundary ID zero"},
+                {-1, List.of(404), "Negative booking ID"},
+                {Integer.MAX_VALUE, List.of(404), "Non-existing max integer ID"},
+                {Long.MAX_VALUE, List.of(404), "Non-existing very large long ID"},
+                {"abc", List.of(400, 404), "Non-numeric booking ID"},
+                {"1.5", List.of(400, 404), "Decimal booking ID"},
+                {"!@#$", List.of(400, 404), "Special characters booking ID"}
+        };
     }
+
 }

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UpdateBookingTests extends ApiBaseTest {
 
     @Test
-    public void shouldReplaceBookingWhenValidPayloadAndTokenProvided() {
+    public void updateBooking_validPayloadAndToken_replacesBooking() {
         Booking originalBooking = new Booking(
                 "Iron",
                 "Man",

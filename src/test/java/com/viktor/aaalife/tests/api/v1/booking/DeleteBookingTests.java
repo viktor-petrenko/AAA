@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DeleteBookingTests extends ApiBaseTest {
 
     @Test
-    public void verifyExistingBookingDeletion() {
+    public void deleteBooking_existingBookingWithValidToken_removesBooking() {
         Booking booking = new Booking(
                 "Iron",
                 "Man",
@@ -46,7 +46,7 @@ public class DeleteBookingTests extends ApiBaseTest {
     }
 
     @Test(dataProvider = "invalidDeleteBookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldReturnExpectedErrorWhenDeletingInvalidOrBoundaryBookingId(
+    public void deleteBooking_invalidOrBoundaryBookingId_returnsExpectedError(
             Object bookingIdInput,
             String tokenInput,
             List<Integer> expectedStatuses,
@@ -67,7 +67,7 @@ public class DeleteBookingTests extends ApiBaseTest {
     }
 
     @Test(dataProvider = "invalidDeleteAuthData", dataProviderClass = BookingDataProvider.class)
-    public void shouldRejectDeleteWhenTokenIsInvalidOrMissing(
+    public void deleteBooking_invalidOrMissingToken_returnsForbidden(
             String token,
             List<Integer> expectedStatuses,
             String caseName) {

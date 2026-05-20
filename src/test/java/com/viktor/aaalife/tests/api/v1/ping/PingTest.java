@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PingTest extends ApiBaseTest {
 
     @Test
-    public void shouldReturnCreatedWhenApiIsHealthy() {
+    public void ping_healthCheck_returnsSuccessStatus() {
         Response response = client().ping();
 
         // doc says https://www.kuapp.com/apidoc#api-Ping-Ping

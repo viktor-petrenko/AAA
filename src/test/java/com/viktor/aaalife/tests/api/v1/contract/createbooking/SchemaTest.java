@@ -19,12 +19,12 @@ public class SchemaTest extends ApiBaseTest {
             "testdata/api/v1/schemas/create-booking-response-schema.json";
 
     @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldMatchCreateBookingRequestSchemaForValidTestData(Booking booking) {
+    public void createBooking_validTestData_matchesRequestSchema(Booking booking) {
         assertObjectMatchesSchema(booking, CREATE_BOOKING_REQUEST_SCHEMA);
     }
 
     @Test(dataProvider = "bookingData", dataProviderClass = BookingDataProvider.class)
-    public void shouldMatchCreateBookingResponseSchemaForValidPayload(Booking booking) {
+    public void createBooking_validPayload_matchesResponseSchema(Booking booking) {
         Response response = client().createBooking(booking);
 
         assertThat(response.statusCode()).isEqualTo(200);

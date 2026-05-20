@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SchemaTest extends ApiBaseTest {
 
     @Test
-    public void verifyUpdateBookingSchema() {
+    public void updateBooking_response_matchesBookingSchema() {
         Booking originalBooking = new Booking(
                 "Iron",
                 "Man",

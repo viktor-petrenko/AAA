@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GetBookingIdsTests extends ApiBaseTest {
 
     @Test
-    public void shouldReturnBookingIdsWhenBookingsExist() {
+    public void getBookingIds_existingBookings_returnsPositiveBookingIds() {
         Response response = client().getBookingIds();
 
         assertThat(response.statusCode()).isEqualTo(200);
