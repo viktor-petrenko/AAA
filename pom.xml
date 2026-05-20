@@ -103,9 +103,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <includes>
+                    <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/suites/all.xml</suiteXmlFile>
-                    </includes>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 

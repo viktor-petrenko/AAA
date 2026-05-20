@@ -7,15 +7,27 @@
     </listeners>
 
     <test name="API Tests">
-        <packages>
-            <package name="com.viktor.aaalife.tests.api.v1.*"/>
-        </packages>
+        <classes>
+            <class name="com.viktor.aaalife.tests.api.v1.auth.AuthTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.CreateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.GetBookingIdsTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.GetBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.UpdateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.PartialUpdateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.DeleteBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.ping.PingTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.createbooking.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.createbooking.CreateBookingContractTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.getbooking.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.getbookingbyids.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.updatebooking.SchemaTest"/>
+        </classes>
     </test>
 
     <test name="UI Smoke Tests">
-        <packages>
-            <package name="com.viktor.aaalife.tests.ui"/>
-        </packages>
+        <classes>
+            <class name="com.viktor.aaalife.tests.ui.SauceDemoSmokeTest"/>
+        </classes>
     </test>
 
 </suite>

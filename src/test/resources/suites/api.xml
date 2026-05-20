@@ -1,12 +1,26 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
 <suite name="AAA Life SDET Assessment API Suite">
-    <listeners>
-        <listener class-name="com.viktor.aaalife.setup.ui.listeners.UiFailureListener"/>
-    </listeners>
 
     <test name="API Tests">
-        <packages>
-            <package name="com.viktor.aaalife.tests.api.v1.*"/>
-        </packages>
+        <classes>
+            <class name="com.viktor.aaalife.tests.api.v1.auth.AuthTest"/>
+
+            <class name="com.viktor.aaalife.tests.api.v1.booking.CreateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.GetBookingIdsTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.GetBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.UpdateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.PartialUpdateBookingTests"/>
+            <class name="com.viktor.aaalife.tests.api.v1.booking.DeleteBookingTests"/>
+
+            <class name="com.viktor.aaalife.tests.api.v1.ping.PingTest"/>
+
+            <class name="com.viktor.aaalife.tests.api.v1.contract.createbooking.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.createbooking.CreateBookingContractTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.getbooking.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.getbookingbyids.SchemaTest"/>
+            <class name="com.viktor.aaalife.tests.api.v1.contract.updatebooking.SchemaTest"/>
+        </classes>
     </test>
+
 </suite>
